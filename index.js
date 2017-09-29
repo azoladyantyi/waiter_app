@@ -1,6 +1,11 @@
 const exphbs = require("express-handlebars");
 const form = require('body-parser');
 var express = require('express');
+const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/waiterApp";
+const models = require("./models");
+
+
+var app = express();
 var app = express();
 
 app.engine("handlebars", exphbs({
@@ -19,13 +24,23 @@ app.get("/", function(req, res) {
 });
 
 app.get('/waiter/:username', function(req, res) {
-    res.send(req.params.username)
+  var username = req.params.username;
+    res.render("home",{
+
+    })
 });
 
 // POST method route
 app.post('/waiter/:username', function(req, res) {
-    res.send(req.params.username)
-})
+    res.render('homer', {
+displayUsername: username
+    })
+});
+
+
+app.get('/days', function(req, res) {
+
+});
 //start the server
 var server = app.listen(3000, function() {
 
