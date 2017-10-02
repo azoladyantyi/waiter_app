@@ -1,0 +1,15 @@
+table, th, td {
+    border: 1px solid black;
+    border:2px solid;
+    padding:10px 40px;
+    width:150px;
+    resize:both;
+    overflow:auto;
+}
+h1 {
+    text-align: center;
+    color: green;
+    font-size: 90px;
+    background-position: center;
+    background-color: white;
+}

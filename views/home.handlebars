@@ -1,19 +1,14 @@
 <h1>waiter's App</h1>
 <form class="" action="/waiter/{{username}}" method="post">
-  <input type="text" name="" value="username"placeholder="type the username"><br><br>
-  <input type="text" name="" value="" placeholder="type the password"><br><br>
-  <input type="button" name="" value=""><br><br>
-</form>
-<form class="" action="/days" method="post">
-  <input type="checkbox" name="days" value="Sunday" {{#if days.Sunday}} checked {{/if}}>Sunday</input>
-  <input type="checkbox" name="days" value="Monday"{{#if days.Monday}} checked {{/if}}>Monday</input>
-  <input type="checkbox" name="days" value="Tuesday"{{#if days.Tuesday}} checked {{/if}}>Tuesay</input>
-  <input type="checkbox" name="days" value="Wednsday"{{#if days.Wednsday}} checked {{/if}}>Wednesday</input>
-  <input type="checkbox" name="days" value="Thursday"{{#if days.Thursday}} checked {{/if}}>Thursday</input>
-  <input type="checkbox" name="days" value="Friday"{{#if days.Friday}} checked {{/if}}>Friday</input>
-  <input type="checkbox" name="days" value="Saturday"{{#if days.Saturday}} checked {{/if}}>Saturday</input><br><br>
+    <input type="checkbox" name="days" value="Sunday" {{#if days.Sunday}} checked {{/if}}>Sunday</input>
+    <input type="checkbox" name="days" value="Monday"{{#if days.Monday}} checked {{/if}}>Monday</input>
+    <input type="checkbox" name="days" value="Tuesday"{{#if days.Tuesday}} checked {{/if}}>Tuesay</input>
+    <input type="checkbox" name="days" value="Wednsday"{{#if days.Wednsday}} checked {{/if}}>Wednesday</input>
+    <input type="checkbox" name="days" value="Thursday"{{#if days.Thursday}} checked {{/if}}>Thursday</input>
+    <input type="checkbox" name="days" value="Friday"{{#if days.Friday}} checked {{/if}}>Friday</input>
+    <input type="checkbox" name="days" value="Saturday"{{#if days.Saturday}} checked {{/if}}>Saturday</input><br><br>
+  <button type="submit" name="button">Submit</button>
 
-<button type="submit" name="button">Submit</button>
 </form>
 <div class="">
   {{displayUsername}}
