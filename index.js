@@ -25,27 +25,26 @@ app.get("/", function(req, res) {
 
 app.get('/waiter/:username', function(req, res) {
   var username = req.params.username;
+
+
     res.render("home",{
-
-    })
-});
-
-// POST method route
-app.post('/waiter/:username', function(req, res) {
-    res.render('homer', {
-displayUsername: username
+      displayUsername: username
     })
 });
 
 
-app.get('/days', function(req, res) {
-
+app.get('/admin', function (req, res) {
+  res.render('admin', {});
 });
+
 //start the server
-var server = app.listen(3000, function() {
+app.set('port', (process.env.PORT || 5000));
 
-    var host = server.address().address;
-    var port = server.address().port;
+app.use(function(err, req, res, next) {
+    res.status(500).send(err.stack)
+});
 
-    console.log('Example app listening at http://%s:%s', host, port);
+app.listen(app.get('port'), function() {
+    console.log('Node app is running on port' + app.get('port'));
+
 });
