@@ -1,6 +1,6 @@
 <div class="container-fluid">
     <div class="w3-row-padding">
-        <form class="table" action="admin" method="get">
+        <form class="table" action="days" method="get">
             <table class="table table-responsive">
                 <thead>
                     <tr>
@@ -15,17 +15,18 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <ul>
                           <td class="{{color1}}">
                           {{#each day1}}
                             <li>{{this}}</li>
                           {{/each}}
                         </td>
-                        <td  class="{{color2}}">
+
+                        <td class="{{color2}}">
                           {{#each day2}}
                           <li>{{this}}</li>
                           {{/each}}
                         </td>
+
                         <td class="{{color3}}">
                           {{#each day3}}
                             <li>{{this}}</li>
@@ -55,14 +56,9 @@
                           <li>{{this}}</li>
                           {{/each}}
                         </td>
-                      </ul>
                     </tr>
                   </tbody>
             </table>
         </form>
-
     </div>
-    <form class="" action="/reset" method="post">
-      <button type="submit" name="button" class="">Reset waiter</button>
-    </form>
-      </div>
+</div>

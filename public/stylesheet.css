@@ -13,10 +13,16 @@ h1 {
     background-position: center;
     background-color: white;
 }
-body {
-  background-image: waiter.jpg;
+.color1{
+  background-color: green;
 }
-body {
-    background-color: purple;
-    text-align: center;
+.color2{
+  background-color: blue;
+}
+
+.color3{
+  background-color: yellow;
+}
+li{
+  list-style: none;
 }

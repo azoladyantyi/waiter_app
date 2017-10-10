@@ -1,27 +1,22 @@
-var mongoose = require('mongoose');
-var Schema=mongoose.Schema;
+const mongoose = require('mongoose');
+
 const mongoURL = process.env.MONGO_DB_URL || "mongodb://localhost/waiterApp";
 
-mongoose.connect(mongoURL,{
-  mongoUser:true
-}),function(err) {
-  if (err) {
-    console.log('error connection');
-  } else {
-    console.log('database connection success');
-  }
-};
-
-exports.waiterData = mongoose.model('waiterData',{
-  username:String,
-  days: {
-    Sunday:Boolean,
-    Monday : Boolean,
-    Tuesday : Boolean,
-    Wednesday:Boolean,
-    Thursday:Boolean,
-    Friday:Boolean,
-    Saturday:Boolean
-  }
+mongoose.connect(mongoURL, {
+  useMongoClient: true
+},function(error) {
 
 });
+
+module.exports = function () {
+  const waiterSchema = mongoose.Schema({
+    name: String,
+    days: Object
+  })
+  waiterSchema.index({name: 1}, {unique: true})
+  const waiterData = mongoose.model("waiterData", waiterSchema)
+
+  return {
+    waiterData
+  }
+}
