@@ -1,3 +1,6 @@
+body{
+  background-color: #48C9B0  ;
+}
 table, th, td {
     border: 1px solid black;
     border:2px solid;
@@ -12,6 +15,10 @@ h1 {
     font-size: 90px;
     background-position: center;
     background-color: white;
+}
+h2{
+  color: white;
+  font-size: 90px;
 }
 .color1{
   background-color: green;

@@ -40,7 +40,7 @@ app.set("view engine", "handlebars")
 
 app.get("/waiter/:username", function(req, res) {
     var username = req.params.username;
-    message = "Hello and welcome " + username + " can you please select your working days ";
+    message = "Hello and welcome, " + username + " can you please select your working days ";
     res.render("home", {
         message: message
     })
@@ -50,7 +50,7 @@ app.post("/waiter/:username", function(req, res) {
     var username = req.params.username;
     var daysToWork = req.body.days;
     var workingDays = {};;
-    var messageUpdateShifts = username + " your shifts are  successfully added";
+    var messageUpdateShifts = username +","+ " your shifts are  successfully added";
 
     models.waiterData.findOneAndUpdate({
         name: username

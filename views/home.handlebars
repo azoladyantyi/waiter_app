@@ -4,13 +4,13 @@
     <div class="w3-row-padding">
       {{message}}<br><br>
 <form class="" action="" method="post">
-  <input type="checkbox" name="days" value="sunday" {{#if days.sunday}}checked{{/if}}>Sunday
-  <input type="checkbox" name="days" value="monday" {{#if days.monday}}checked{{/if}}>Monday
-  <input type="checkbox" name="days" value="tuesday" {{#if days.tuesday}}checked{{/if}}>Tuesday
-  <input type="checkbox" name="days" value="wednesday" {{#if days.wednesday}}checked{{/if}}>Wednesday
-  <input type="checkbox" name="days" value="thursday" {{#if days.thursday}}checked{{/if}}>Thursday
-  <input type="checkbox" name="days" value="friday" {{#if days.friday}}checked{{/if}}>Friday
-  <input type="checkbox" name="days" value="saturday" {{#if days.saturday}}checked{{/if}}>Saturday <br><br>
+  <input type="checkbox" name="days" value="sunday" autocomplete="off" {{#if days.sunday}}checked{{/if}}>Sunday
+  <input type="checkbox" name="days" value="monday" autocomplete="off"{{#if days.monday}}checked{{/if}}>Monday
+  <input type="checkbox" name="days" value="tuesday"autocomplete="off" {{#if days.tuesday}}checked{{/if}}>Tuesday
+  <input type="checkbox" name="days" value="wednesday" autocomplete="off"{{#if days.wednesday}}checked{{/if}}>Wednesday
+  <input type="checkbox" name="days" value="thursday"autocomplete="off" {{#if days.thursday}}checked{{/if}}>Thursday
+  <input type="checkbox" name="days" value="friday" autocomplete="off"{{#if days.friday}}checked{{/if}}>Friday
+  <input type="checkbox" name="days" value="saturday"autocomplete="off" {{#if days.saturday}}checked{{/if}}>Saturday <br><br>
   <button type="submit" name="button" class="btn btn-primary">Submit</button>
 
 </form>
