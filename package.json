@@ -1,6 +1,7 @@
 {
   "name": "waiter_app",
   "version": "1.0.0",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
@@ -8,6 +9,7 @@
   },
   "dependencies": {
     "body-parser": "^1.18.2",
+    "cool-ascii-faces": "^1.3.4",
     "express": "^4.15.5",
     "express-flash": "0.0.2",
     "express-handlebars": "^3.0.0",
@@ -26,6 +28,5 @@
   "bugs": {
     "url": "https://github.com/azoladyantyi/waiter_app/issues"
   },
-  "homepage": "https://github.com/azoladyantyi/waiter_app#readme",
-  "description": ""
+  "homepage": "https://github.com/azoladyantyi/waiter_app#readme"
 }
