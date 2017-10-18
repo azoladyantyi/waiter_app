@@ -118,8 +118,7 @@ app.get('/admin', function(req, res) {
             var names = dayOutcome.name;
             console.log(names);
 
-
-            for (var i = 0; i < day.length; i++) {
+            for (var i = 0; i < results.length; i++) {
 
                 var storedWaiterDays = day[i];
                 if (storedWaiterDays === "sunday") {
