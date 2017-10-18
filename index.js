@@ -52,14 +52,33 @@ app.post("/waiter/:username", function(req, res) {
     var workingDays = {};
     var messageUpdateShifts = username +","+ " your shifts are  successfully added";
 
+
+if (!Array.isArray(daysToWork)) {
+  daysToWork= [daysToWork]
+}
+daysToWork.forEach(function(results) {
+  workingDays[results] = true;
+})
+
     models.waiterData.findOneAndUpdate({
         name: username
     }, {
-        days: daysToWork
+        days: workingDays
     }, function(err, results) {
         if (err) {
             console.log(err);
-        } else {
+        }else{
+        if (results) {
+          res.render("home")
+        }
+        if (results) {
+          var data = {
+            name: results.username,
+            days: results.workingDays
+          }
+          res.render('home', data)
+        }
+      }
             if (!results) {
                 models.waiterData.create({
                     name: username,
@@ -75,10 +94,8 @@ app.post("/waiter/:username", function(req, res) {
                     }
                 });
 
-            } else {
-          res.render("home")
             }
-        }
+
 
     })
 daysToWork.forEach(function(day){
