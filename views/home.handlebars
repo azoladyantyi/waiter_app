@@ -1,13 +1,19 @@
 <head>
+  <meta charset="utf-8">
+  <title>days</title>
   <link href="https://fonts.googleapis.com/css?family=Akronim|Londrina+Outline|Rye|Shojumaru" rel="stylesheet">
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/days.css">
 </head>
 <h1>Waiters Availability</h1>
 <center>
 <div class="container-fluid">
     <div class="w3-row-padding">
       {{message}}<br><br>
+
 <form class="" action="" method="post">
-  <input type="checkbox" name="days" value="sunday"  {{#if days.sunday}}checked{{/if}}>Sunday
+
+  <input type="checkbox" name="days" value="sunday" {{#if days.sunday}}checked{{/if}}>Sunday
   <input type="checkbox" name="days" value="monday" {{#if days.monday}}checked{{/if}}>Monday
   <input type="checkbox" name="days" value="tuesday" {{#if days.tuesday}}checked{{/if}}>Tuesday
   <input type="checkbox" name="days" value="wednesday" {{#if days.wednesday}}checked{{/if}}>Wednesday

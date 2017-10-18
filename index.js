@@ -49,7 +49,7 @@ app.get("/waiter/:username", function(req, res) {
 app.post("/waiter/:username", function(req, res) {
     var username = req.params.username;
     var daysToWork = req.body.days;
-    var workingDays = {};;
+    var workingDays = {};
     var messageUpdateShifts = username +","+ " your shifts are  successfully added";
 
     models.waiterData.findOneAndUpdate({
@@ -76,14 +76,17 @@ app.post("/waiter/:username", function(req, res) {
                 });
 
             } else {
-                res.render("waiter")
+          res.render('home', {
+            name: results.name,
+            days: results.daysToWork
+          })
             }
         }
 
     })
-
-
-
+daysToWork.forEach(function(day){
+workingDays[day]=true;
+});
 });
 
 function colorForDays(daysColor) {
