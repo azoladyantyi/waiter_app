@@ -120,7 +120,7 @@ app.get('/admin', function(req, res) {
 
             for (var i = 0; i < results.length; i++) {
 
-                var storedWaiterDays = day[i];
+                var storedWaiterDays = results[i];
                 if (storedWaiterDays === "sunday") {
                     sunday.push(names);
 
