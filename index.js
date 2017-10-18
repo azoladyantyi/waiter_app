@@ -76,10 +76,7 @@ app.post("/waiter/:username", function(req, res) {
                 });
 
             } else {
-          res.render('home', {
-            name: results.name,
-            days: results.daysToWork
-          })
+          res.render("home")
             }
         }
 
