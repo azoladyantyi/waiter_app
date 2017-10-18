@@ -69,9 +69,6 @@ daysToWork.forEach(function(results) {
             console.log(err);
         }else{
         if (results) {
-          res.render("home")
-        }
-        if (results) {
           var data = {
             name: results.username,
             days: results.workingDays
@@ -129,42 +126,42 @@ app.get('/admin', function(req, res) {
         var friday = [];
         var saturday = [];
 
-        results.forEach(function(dayOutcome) {
-            var day = dayOutcome.days;
+        // results.forEach(function(dayOutcome) {
+        //     var day = dayOutcome.days;
 
-            var names = dayOutcome.name;
-            console.log(names);
+            // var names = dayOutcome.name;
+            // console.log(names);
 
             for (var i = 0; i < results.length; i++) {
-
-                var storedWaiterDays = results[i];
+                var storedWaiterDays = results[i].days;
+                for(var storedWaiterDays in storedWaiterDays)
                 if (storedWaiterDays === "sunday") {
-                    sunday.push(names);
+                    sunday.push(results[i].name);
 
                 }
                 if (storedWaiterDays === "monday") {
-                    monday.push(names);
+                    monday.push(results[i].name);
                 }
                 if (storedWaiterDays === "tuesday") {
-                    tuesday.push(names)
+                    tuesday.push(results[i].name)
                 }
                 if (storedWaiterDays === "wednesday") {
-                    wednesday.push(names)
+                    wednesday.push(results[i].name)
                 }
                 if (storedWaiterDays === "thursday") {
-                    thursday.push(names)
+                    thursday.push(results[i].name)
                 }
                 if (storedWaiterDays === "friday") {
-                    friday.push(names)
+                    friday.push(results[i].name)
                 }
                 if (storedWaiterDays === "saturday") {
-                    saturday.push(names)
+                    saturday.push(results[i].name)
 
                 }
 
-            }
+            // }
 
-        })
+        }
 
         res.render("admin", {
             day1: sunday,
