@@ -40,9 +40,31 @@ app.set("view engine", "handlebars")
 
 app.get("/waiter/:username", function(req, res) {
     var username = req.params.username;
+    var workDays = {};
     message = "Hello and welcome, " + username + " can you please select your working days ";
-    res.render("home", {
-        message: message
+    models.waiterData.findOne({
+        name: username
+    }, function(err, doc) {
+        if (err) {
+            console.log(err);
+        } else if (doc) {
+            var daysArray = doc.days;
+            // console.log(daysArray);
+            res.render("home", {
+                message: message,
+                days: doc.days
+            })
+        } else {
+            models.waiterData.create({
+                name: username,
+            }, function(err, results) {
+                if (err) {
+                    console.log(err);
+                } else {
+                    res.redirect("/waiter/" + username);
+                }
+            });
+        }
     })
 });
 
@@ -50,15 +72,15 @@ app.post("/waiter/:username", function(req, res) {
     var username = req.params.username;
     var daysToWork = req.body.days;
     var workingDays = {};
-    var messageUpdateShifts = username +","+ " your shifts are  successfully added";
+    var messageUpdateShifts = username + "," + " your shifts are  successfully added";
 
 
-if (!Array.isArray(daysToWork)) {
-  daysToWork= [daysToWork]
-}
-daysToWork.forEach(function(results) {
-  workingDays[results] = true;
-})
+    if (!Array.isArray(daysToWork)) {
+        daysToWork = [daysToWork]
+    }
+    daysToWork.forEach(function(results) {
+        workingDays[results] = true;
+    })
 
     models.waiterData.findOneAndUpdate({
         name: username
@@ -67,37 +89,25 @@ daysToWork.forEach(function(results) {
     }, function(err, results) {
         if (err) {
             console.log(err);
-        }else{
-        if (results) {
-          var data = {
-            name: results.username,
-            days: results.workingDays
-          }
-          res.render('home', data)
-        }
-      }
-            if (!results) {
-                models.waiterData.create({
-                    name: username,
-                    days: daysToWork
-
-                }, function(err, results) {
-                    if (err) {
-                        console.log(err);
-                    } else {
-                        res.render("home", {
-                            alertShifts: messageUpdateShifts
-                        })
-                    }
-                });
-
+        } else {
+            if (results) {
+                var data = {
+                    name: results.username,
+                    days: results.workingDays
+                }
+                res.redirect("/waiter/" + username);
             }
+        }
+        if (!results) {
+
+
+        }
 
 
     })
-daysToWork.forEach(function(day){
-workingDays[day]=true;
-});
+    daysToWork.forEach(function(day) {
+        workingDays[day] = true;
+    });
 });
 
 function colorForDays(daysColor) {
@@ -118,6 +128,7 @@ app.get('/admin', function(req, res) {
         if (err) {
             console.log(err);
         }
+
         var sunday = [];
         var monday = [];
         var tuesday = [];
@@ -126,38 +137,34 @@ app.get('/admin', function(req, res) {
         var friday = [];
         var saturday = [];
 
-        // results.forEach(function(dayOutcome) {
-        //     var day = dayOutcome.days;
 
-            // var names = dayOutcome.name;
-            // console.log(names);
+        for (var i = 0; i < results.length; i++) {
 
-            for (var i = 0; i < results.length; i++) {
-                var storedWaiterDays = results[i].days;
-                for(var storedWaiterDays in storedWaiterDays)
+            var curStoredWaiterDays = results[i].days;
+            for (var storedWaiterDays in curStoredWaiterDays)
                 if (storedWaiterDays === "sunday") {
                     sunday.push(results[i].name);
 
                 }
-                if (storedWaiterDays === "monday") {
-                    monday.push(results[i].name);
-                }
-                if (storedWaiterDays === "tuesday") {
-                    tuesday.push(results[i].name)
-                }
-                if (storedWaiterDays === "wednesday") {
-                    wednesday.push(results[i].name)
-                }
-                if (storedWaiterDays === "thursday") {
-                    thursday.push(results[i].name)
-                }
-                if (storedWaiterDays === "friday") {
-                    friday.push(results[i].name)
-                }
-                if (storedWaiterDays === "saturday") {
-                    saturday.push(results[i].name)
+          else  if (storedWaiterDays === "monday") {
+                monday.push(results[i].name);
+            }
+          else  if (storedWaiterDays === "tuesday") {
+                tuesday.push(results[i].name)
+            }
+            else if (storedWaiterDays === "wednesday") {
+                wednesday.push(results[i].name)
+            }
+          else  if (storedWaiterDays === "thursday") {
+                thursday.push(results[i].name)
+            }
+          else  if (storedWaiterDays === "friday") {
+                friday.push(results[i].name)
+            }
+          else  if (storedWaiterDays === "saturday") {
+                saturday.push(results[i].name)
 
-                }
+            }
 
             // }
 
